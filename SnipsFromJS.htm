@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    
+        
+        <head>
+
+
+<style>
+  
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+    
+    .container {
+    position: relative;
+}
+
+/* Bottom right text */
+.text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+    
+</style>
+            
+   
+</head>
+    
+<body>
+
+<div id="id01"></div>
+    
+    
+<script>
+    var snipArr=[];
+    var snipArrGreen=[];
+    var out = "";
+     var out2 = "";
+     var out3 = "";
+function snipsBlue(arr) {
+  
+    var i;
+    
+    for(i = 0; i<arr.length; i++) {
+        snipArr.push(arr[i].snip);
+        out +='<span class="button button2" id="'+ i +'" type="button"draggable="true" ondragstart="drag(event)" style="width:25%">'+ 
+        arr[i].display + '</span>';   
+                
+    }    
+ 
+    
+}
+    
+    function snipsGreen(arr) {
+  
+    var i;
+    
+    for(i = 0; i<arr.length; i++) {
+        snipArrGreen.push(arr[i].snip);
+        out2 +='<span class="button" id="'+ i +'" type="button"draggable="true" ondragstart="drag(event)" style="width:25%">'+ 
+        arr[i].display + '</span>';       
+        
+    }
+    }
+        
+        function snipsRed(arr) {
+  
+    var i;
+    
+    for(i = 0; i<arr.length; i++) {
+        snipArr.push(arr[i].snip);
+        out3 +='<span class="button button3" id="'+ i +'" type="button"draggable="true" ondragstart="drag(event)" style="width:25%">'+ 
+        arr[i].display + '</span>';   
+                
+    }  
+            
+              document.getElementById("id01").innerHTML = out+"<HR></HR>"+out2+"<HR></HR>"+out3;   
+    
+        }
+    
+   
+    
+    
+</script>
+    
+    
+
+<script>
+
+function allowDrop(ev) {
+ev.preventDefault();
+}
+function drag(ev) {    
+ //alert(event.srcElement.id);
+ev.dataTransfer.setData("text",snipArr[event.srcElement.id]);
+}
+function drop(ev) {
+ev.preventDefault();
+var data = ev.dataTransfer.getData("text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</body>
+    
+<script src="snipsBlue.js"></script>
+<script src="snipsGreen.js"></script>
+ <script src="snipsRed.js"></script>   
+    
+</html>
