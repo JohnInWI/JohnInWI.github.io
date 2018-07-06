@@ -62,7 +62,7 @@ function snipsBlue(arr) {
     
     for(i = 0; i<arr.length; i++) {
         snipArr.push(arr[i].snip);
-        out +='<span class="button button2" id="'+ i +'" type="button"draggable="true" ondragstart="drag(event)" style="width:25%">'+ 
+        out +='<span class="button button2" id="'+ i +'" type="button"draggable="true" onclick="copy()" ondragstart="drag(event)" style="width:25%">'+ 
         arr[i].display + '</span>';   
                 
     }    
@@ -117,6 +117,12 @@ function drop(ev) {
 ev.preventDefault();
 var data = ev.dataTransfer.getData("text");
 ev.target.appendChild(document.getElementById(data));
+}
+function copy() {
+  var copyText = document.getElementById("text");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
 }
 </script>
 
