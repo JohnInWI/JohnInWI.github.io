@@ -62,7 +62,7 @@ function snipsBlue(arr) {
     
     for(i = 0; i<arr.length; i++) {
         snipArr.push(arr[i].snip);
-        out +='<span class="button button2" id="'+ i +'" type="button"draggable="true" onclick="copy(event)" ondragstart="drag(event)" style="width:25%">'+ 
+        out +='<span class="button button2" id="'+ i +'" type="button"draggable="true" onclick="myFunction" ondragstart="drag(event)" style="width:25%">'+ 
         arr[i].display + '</span>';   
                 
     }    
@@ -123,6 +123,10 @@ function copy(ev) {
   copyText.select();
   document.execCommand("copy");
   alert("Copied the text: " + copyText.value);
+    
+    function myFunction() {
+  alert("alert ");
+}
 }
 </script>
 
